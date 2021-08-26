@@ -1,0 +1,26 @@
+swagger: '2.0' 
+info:
+  title: Cloud Endpoints + Cloud Run + Anthos
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  version: 1.0.0 
+host: hello-randomcorp.endpoints.ira-sandbox.cloud.goog
+x-google-endpoints:
+- name: hello-randomcorp.endpoints.ira-sandbox.cloud.goog
+  target: "34.129.27.156"
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: http://hello-randomcorp.default.svc.cluster.local
+  disable_auth: true
+paths:
+  /hello:
+    get:
+      summary: Greet a user
+      operationId: hello
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
